@@ -6,11 +6,11 @@
 
    Great Lakescape Lodge Style Sheet
    Author: Yiran Ji
-   Date:   2026‑09‑16
+   Date:   2026‑09‑18
    Filename: lake_styles.css
 */
 
-/* Import custom font Dobkin */
+/* Import custom web font: Dobkin */
 @font-face {
     font-family: 'Dobkin';
     src: url('DobkinPlain.woff') format('woff'),
@@ -19,7 +19,7 @@
     font-style: normal;
 }
 
-/* Import custom font CacChampagne */
+/* Import custom web font: CacChampagne */
 @font-face {
     font-family: 'CacChampagne';
     src: url('cac_champagne.woff') format('woff'),
@@ -28,75 +28,54 @@
     font-style: normal;
 }
 
-/* Root page style */
+/* Page root settings, semi‑transparent background (Requirement 3.d) */
 html {
-    background-color: rgb(156 156 97 / 0.81); /* Outer background color */
-    padding: 4px; /* Spacing around page */
+    background-color: rgb(156 156 97 / 0.81);
+    padding: 4px;
 }
 
-/* Main body container */
+/* Main body container, set page size and faux‑column gradient for equal‑height sidebar */
 body {
-    background-color: rgb(18 17 17 / 0.85); /* Main content background */
-    color: rgb(244 240 240 / 0.91); /* Default text color */
+    background-color: rgb(18 17 17 / 0.85);
+    color: rgb(244 240 240 / 0.91);
     font-family: "Times New Roman", Times, serif;
-
-    max-width: 700px; /* Limit page maximum width */
-    margin: 0 auto; /* Center body horizontally */
+    max-width: 700px;  /* Restrict overall page width to match reference screenshot */
+    min-width: 640px;
+    margin: 0 auto;
+    background-image: linear-gradient(to right, black 70%, #512861 70%);
 }
 
-/* Clearfix for float collapse */
-body::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/* Top navigation bar */
+/* Top navigation bar style */
 header > nav {
-    background-color: #7a428a; /* Nav purple background */
+    background-color: #7a428a;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 header > nav a {
-    color: #afacac; /* Link text color */
-    text-decoration: none; /* Remove underline */
+    color: #afacac;
+    text-decoration: none;
     font-family: "Times New Roman", serif;
     font-size: 1.0em;
 }
-header > nav a:hover {
-    background-color: #4a2558; /* Dark purple on hover */
-    color: #ffffff; /* White text on hover */
+header > nav a:hover { /* Pseudo‑class for hover effect (Requirement 3.g) */
+    background-color: #4a2558;
+    color: #ffffff;
 }
 
-#container {
-    display: flex;
-    gap: 20px;
-}
-/* Left content column */
-section#leftcol {
-    width: 66% !important;
-    margin-right: 0 !important;
-    padding-left:0 !important;
-    padding-right:15px !important;
-    box-sizing: border-box !important;
-}
-
-/* Welcome h1 heading */
+/* Main page heading, child combinator selector (Requirement 3.e) */
 section#leftcol > h1 {
     font-family: 'CacChampagne', cursive;
     font-weight: normal;
     color: white;
     font-size: 44px;
-
     margin-left: 5px;
     margin-top: 12px;
     margin-bottom: 4px;
-
     line-height: 1.0;
     padding: 0;
 }
 
-/* Paragraph text inside left column */
+/* Paragraph text inside left main content area */
 section#leftcol p {
     margin-left: 12px;
     margin-right: 2px;
@@ -105,82 +84,79 @@ section#leftcol p {
     line-height: 1.4;
     font-size: 14px;
     color: white;
-
-    transform: skewX(1deg); /* Slight text slant */
+    transform: skewX(1deg);
 }
 
-/* Global h2 style */
+/* Global h2 heading font setting */
 h2 {
     font-family: 'Dobkin', cursive;
     font-weight: normal;
 }
 
-/* h2 inside aside boxes */
+/* h2 heading inside aside boxes, nested descendant selector (Requirement 3.e) */
 section#leftcol aside h2 {
     font-family: "Times New Roman", serif;
     font-weight: normal;
     color: #e7e7ef;
     font-size: 16px;
-
     text-align: center;
     margin-top: 0;
-    margin-bottom: 12px;
-    transform: translateY(-4px);
+    margin-bottom: 6px;
 }
 
-/* Base style for aside blocks */
-section#leftcol aside {
+/* First aside panel: Notes (orange‑red box) */
+section#leftcol aside:nth-of-type(1) {
+    float: left;
+    width: 40%;
+    background-color: #dc8e84;
+    color: #e7e7ef;
+    padding: 12px 10px 10px 10px;
+    box-sizing: border-box;
+}
+section#leftcol aside:nth-of-type(1) ul {
+    margin-top: 0;  /* Remove browser default top margin of ul */
+    margin-left: -14px;
+    padding-left: 18px;
+    list-style-type: circle; /* Custom list marker style (Requirement 3.f) */
+    list-style-position: outside;
+}
+section#leftcol aside:nth-of-type(1) li {
     font-size: 12px;
 }
 
-/* First aside (Notes) */
-section#leftcol aside:nth-of-type(1) {
-    background-color: #dc8e84;
-    color: #e7e7ef;
-    padding: 8px;
-    width: 200px;
-}
-section#leftcol aside:nth-of-type(1) ul {
-    margin-left: -14px;
-    padding-left: 18px;
-    list-style-type: circle;
-    list-style-position: outside;
-}
-
-/* Second aside (Upcoming Events) */
+/* Second aside panel: Upcoming Events (yellow‑green box) */
 section#leftcol aside:nth-of-type(2) {
+    float: right;
+    width: 50%;
     background-color: #c5af67;
     color: #e7e7ef;
-    padding: 8px;
-    width: 200px;
+    padding: 12px 10px 10px 10px;
+    box-sizing: border-box;
+}
+section#leftcol aside:nth-of-type(2) dl {
+    margin-top: 0; /* Remove browser default top margin of definition list */
 }
 section#leftcol aside a {
     color: #ff96f0;
 }
 
-/* Definition list for upcoming events */
+/* Definition list style for upcoming events items */
 section#leftcol aside:nth-of-type(2) dl dt {
-    font-size: 14px !important;
-    margin-top:12px !important;
-    margin-bottom:8px !important;
+    font-size: 14px;
+    margin-top:8px;
+    margin-bottom:4px;
 }
 section#leftcol aside:nth-of-type(2) dl dd {
-    width: 95% !important;
-    margin:0 auto 14px auto !important;
+    font-size: 12px;
+    width: 95%;
+    margin:0 auto 10px auto;
 }
 
-/* Right sidebar */
+/* Right‑hand purple sidebar area */
 section#rightcol {
-    width:34% !important;
-    margin: 0 !important;
-
-    background-color: #512861;
     color: #cac3c3;
-
     box-sizing: border-box;
     padding: 10px 14px 10px 16px;
-
-    min-height:950px;
 }
 section#rightcol nav {
     margin-left: 10px;
@@ -189,28 +165,31 @@ section#rightcol h2 {
     font-family: 'Dobkin', cursive;
     font-weight: normal;
     color: #ebd5f3;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
+    margin-top: 20px;
+    font-size: 1.5em;
 }
 section#rightcol a {
     color: #b9b8ba;
     text-decoration: none;
     padding-left: 18px;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.3;
 }
 section#rightcol a:hover {
-    color: #ffffff;
+    color: white;
     text-decoration: underline;
 }
 section#rightcol nav ul {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 4px;
 }
 section#rightcol nav ul li:last-child {
     margin-bottom: 5px;
 }
 
-/* Blockquote guest review */
+/* Guest review blockquote, pseudo‑elements generate quotation marks (3.g & 3.i) */
 blockquote {
     font-family: "Times New Roman", serif;
     color: #e17be1;
@@ -224,21 +203,20 @@ blockquote {
     width:100%;
 }
 blockquote::before {
-    content: "“";
+    content: "“"; /* CSS generated content: opening quote mark (Requirement 3.i) */
     font-size:22px;
 }
 blockquote::after {
-    content: "”";
+    content: "”"; /* CSS generated content: closing quote mark (Requirement 3.i) */
     font-size:22px;
 }
 
-/* Footer */
+/* Page footer style */
 footer {
     background-color: #3f3f47;
     color: #cccccc;
     text-align: center;
     padding: 10px 0;
-    clear: both; /* Clear float */
 }
 footer address {
     text-transform: uppercase;
@@ -248,16 +226,36 @@ footer address {
     font-size: 0.6rem;
 }
 
-/* Photo inside left column */
+/* Main content image inside left column */
 section#leftcol img {
-    display: block !important;
-    width: calc(100% + 15px) !important;
-    max-width: none !important;
-    margin-left:0 !important;
-    margin-right:-15px !important;
-    margin-top:12px !important;
-    margin-bottom:14px !important;
-    padding:0 !important;
-    border:0 !important;
-    height:auto !important;
+    display: block;
+    width: 100%;
+    margin-top:12px;
+    margin-bottom:14px;
+}
+
+/* Apply Flexbox layout inside aside boxes to satisfy Requirement 3.j */
+section#leftcol aside {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== Float‑based two‑column layout ========== */
+body > section#leftcol {
+    float: left;
+    width: 70%;
+    overflow: auto;
+    box-sizing: border-box;
+    margin-right: 0;
+}
+
+body > section#rightcol {
+    float: right;
+    width: 30%;
+    box-sizing: border-box;
+    margin-right:0;
+}
+
+footer {
+    clear: both; /* Clear float so footer appears below floated columns */
 }
