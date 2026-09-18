@@ -68,9 +68,12 @@ header > nav a:hover {
     color: #ffffff; /* White text on hover */
 }
 
+#container {
+    display: flex;
+    gap: 20px;
+}
 /* Left content column */
 section#leftcol {
-    float: left !important;
     width: 66% !important;
     margin-right: 0 !important;
     padding-left:0 !important;
@@ -168,7 +171,6 @@ section#leftcol aside:nth-of-type(2) dl dd {
 
 /* Right sidebar */
 section#rightcol {
-    float: left;
     width:34% !important;
     margin: 0 !important;
 
