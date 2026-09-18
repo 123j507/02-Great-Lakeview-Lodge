@@ -82,7 +82,7 @@ section#leftcol {
 section#leftcol > h1 {
     font-family: 'CacChampagne', cursive;
     font-weight: normal;
-    color: #ffffff;
+    color: white;
     font-size: 44px;
 
     margin-left: 5px;
@@ -101,7 +101,7 @@ section#leftcol p {
     margin-bottom: 12px;
     line-height: 1.4;
     font-size: 14px;
-    color: #ffffff;
+    color: white;
 
     transform: skewX(1deg); /* Slight text slant */
 }
@@ -140,6 +140,8 @@ section#leftcol aside:nth-of-type(1) {
 section#leftcol aside:nth-of-type(1) ul {
     margin-left: -14px;
     padding-left: 18px;
+    list-style-type: circle;
+    list-style-position: outside;
 }
 
 /* Second aside (Upcoming Events) */
